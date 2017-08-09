@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h2>Restaurants index</h2>
+  <p>All restaurants listed here</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <ol>
+
+          <% @restaurants.each do |restaurant| %>
+          <li><%= link_to "#{restaurant.name} - #{restaurant.address}", restaurant_path(restaurant) %></li>
+          <% end %>
+
+      </ol>
+    </div>
+  </div>
+  <div class="row padded">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= link_to "Add a restaurant", new_restaurant_path %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="text-center">
+  <h2>Restaurants#show</h2>
+  <p>Find me in app/views/restaurants/show.html.erb</p>
+</div>
+
+<div class="container">
+  <div class="row ">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <hr>
+      <ul class="list-unstyled">
+        <li><%= @restaurant.name %></li>
+        <li><%= @restaurant.address %></li>
+        <li><%= @restaurant.phone_number %></li>
+        <li><%= @restaurant.category %></li>
+      </ul>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= render 'reviews/form_review' %>
+      <hr>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <ul class="list-unstyled">
+        <% @reviews.each do |review| %>
+          <li>Rating:
+
+            <% review.rating.to_i.times do %>
+            <%= "*" %>
+            <% end %>
+          </li>
+          <li><%= review.content %></li>
+          <li><hr></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="row padded">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+    <%= link_to "Back to index", restaurants_path %>
+    ||
+    <%= link_to "Delete this restaurant", restaurant_path(@restaurant), method: :Delete, data: {confirm: "Are your sure?"} %>
+    ||
+    <%= link_to "Edit restaurant details", edit_restaurant_path(@restaurant) %>
+    ||
+    <%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+    </div>
+  </div>
+
+</div>
